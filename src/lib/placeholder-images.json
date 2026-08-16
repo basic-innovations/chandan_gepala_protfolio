@@ -1,0 +1,118 @@
+{
+  "placeholderImages": [
+    {
+      "id": "chandan-headshot",
+      "description": "A professional headshot of Chandan Gepala.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/studio-6438978537-fd973.firebasestorage.app/o/Gemini_Generated_Image_hr6cykhr6cykhr6c-removebg-preview.png?alt=media&token=6b5492e8-53aa-4306-a332-55ac13cd2215",
+      "imageHint": "professional headshot"
+    },
+    {
+      "id": "chandan-about-headshot",
+      "description": "A professional headshot of Chandan Gepala for the about section.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/studio-6438978537-fd973.firebasestorage.app/o/WhatsApp%20Image%202025-11-27%20at%2014.43.57.jpeg?alt=media&token=9a180707-86d9-4cd6-b527-25f98ec20a8a",
+      "imageHint": "professional headshot"
+    },
+    {
+      "id": "project-mobiapp-ultra",
+      "description": "App screenshot for Mobilab Connect project.",
+      "imageUrl": "https://play-lh.googleusercontent.com/EpBGnN8EI69JR4xNoiiVfKnYp7AsYhkbejihtZiWW-p-2VfVVVj1QB6e9YPCRtXjcw=w480-h960",
+      "imageHint": "healthtech app"
+    },
+    {
+      "id": "project-mobiapp-ultra-1",
+      "description": "App screenshot for Mobilab Connect project detail.",
+      "imageUrl": "https://play-lh.googleusercontent.com/EpBGnN8EI69JR4xNoiiVfKnYp7AsYhkbejihtZiWW-p-2VfVVVj1QB6e9YPCRtXjcw=w480-h960",
+      "imageHint": "medical equipment"
+    },
+    {
+      "id": "project-mobiapp-ultra-2",
+      "description": "App screenshot for Mobilab Connect project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw5NjYxfDB8MXx8c2VhcmNofDR8fGhlYWx0aGNhcmV8ZW58MHx8fHwxNjc3OTM0NTEy&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "healthcare professional"
+    },
+    {
+      "id": "project-gumb",
+      "description": "App screenshot for Gumb project.",
+      "imageUrl": "https://play-lh.googleusercontent.com/4T6k8sM3CK_shSkzyAMqBi5DRaNZ-kqDcQjBUStRyJveqY5THd68etU21fSAikMb-kI=w480-h960",
+      "imageHint": "community chat"
+    },
+    {
+      "id": "project-gumb-1",
+      "description": "App screenshot for Gumb project detail.",
+      "imageUrl": "https://play-lh.googleusercontent.com/y3i_P_cAZswcXdJ225r3iI-3a56l-m7wYg5WkHnCV0k-y4YNcc-z1D3_zI_2jA1C0w=w526-h296-rw",
+      "imageHint": "app schedule"
+    },
+    {
+      "id": "project-gumb-2",
+      "description": "App screenshot for Gumb project detail.",
+      "imageUrl": "https://play-lh.googleusercontent.com/qgSgweHd25G42e9x-8pB0pQnF2pT8j_a-TAr0icgCj-0AKZfO_xX43ouXUow-U4-B5A=w526-h296-rw",
+      "imageHint": "chat interface"
+    },
+    {
+      "id": "project-jaipur-quest",
+      "description": "App screenshot for Jaipur Quest project.",
+      "imageUrl": "https://images.unsplash.com/photo-1705861146218-8a54e3e69591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxKYWlwdXIlMjBsYW5kbWFya3xlbnwwfHx8fDE3NjM1MzE2OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Jaipur landmark"
+    },
+    {
+      "id": "project-kwizzease",
+      "description": "App screenshot for KwizzEase project.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/studio-6438978537-fd973.firebasestorage.app/o/kwizz_ease_logo%20(1).png?alt=media&token=1d793227-5a80-4d5f-ad63-f80d4c834893",
+      "imageHint": "quiz generation"
+    },
+    {
+      "id": "project-eventhorizon",
+      "description": "App screenshot for EventHorizon project.",
+      "imageUrl": "https://images.unsplash.com/photo-1570106413982-7f2897b8d0c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxldmVudCUyMG1hcHxlbnwwfHx8fDE3NjM1MzE2OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event map"
+    },
+    {
+      "id": "project-clean-lakholav",
+      "description": "App screenshot for Clean Lakholav project.",
+      "imageUrl": "https://images.unsplash.com/photo-1747912048787-5c37688382e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHhjcm9wJTIwbGFrZXxlbnwwfHx8fDE3NjM1MzE2OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "clean lake"
+    },
+    {
+      "id": "project-jaipur-quest-1",
+      "description": "App screenshot for Jaipur Quest project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1705861146218-8a54e3e69591?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxKYWlwdXIlMjBsYW5kbWFya3xlbnwwfHx8fDE3NjM1MzE2OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Jaipur landmark"
+    },
+    {
+      "id": "project-jaipur-quest-2",
+      "description": "App screenshot for Jaipur Quest project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1691687614540-e5232b5cd096?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx0b3VyaXN0JTIwZ3VpZGV8ZW58MHx8fHwxNzYzNTMxNjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tourist guide"
+    },
+    {
+      "id": "project-kwizzease-1",
+      "description": "App screenshot for KwizzEase project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1642240251149-bcccea43798d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxxdWl6JTIwaW50ZXJmYWNlfGVufDB8fHx8MTc2MzUyMzY3NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "quiz interface"
+    },
+    {
+      "id": "project-kwizzease-2",
+      "description": "App screenshot for KwizzEase project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1754304342349-ac409efb67c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkZXRhaWxlZCUyMHBlcmZvcm1hbmNlJTIwYW5hbHlzaXN8ZW58MHx8fHwxNzYzNTMxNjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "detailed performance analysis"
+    },
+    {
+      "id": "project-eventhorizon-1",
+      "description": "App screenshot for EventHorizon project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1623000413462-490bda7e0da3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxldmVudCUyMGRldGFpbHN8ZW58MHx8fHwxNzYzNTMxNjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "event details"
+    },
+    {
+      "id": "project-clean-lakholav-1",
+      "description": "App screenshot for Clean Lakholav project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1758599668337-58bfa42683ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx2b2x1bnRlZXJzJTIwY2xlYW5pbmd8ZW58MHx8fHwxNzYzNDQyNjE0fDA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageHint": "volunteers cleaning"
+    },
+    {
+      "id": "project-clean-lakholav-2",
+      "description": "App screenshot for Clean Lakholav project detail.",
+      "imageUrl": "https://images.unsplash.com/photo-1644178132556-bdff90576700?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZXN0b3JlZCUyMGxha2V8ZW58MHx8fHwxNzYzNTMxNjkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "restored lake"
+    }
+  ]
+}

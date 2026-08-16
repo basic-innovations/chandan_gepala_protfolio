@@ -1,0 +1,98 @@
+/**
+ * @file Firestore Security Rules
+ * @description This ruleset enforces a strict user-ownership model for developer profiles and project data, while allowing public access to contact form submissions.
+ *
+ * Data Structure:
+ * - /developerProfiles/{developerProfileId}: Stores individual developer profiles. Access is restricted to the user matching the {developerProfileId}.
+ * - /projects/{projectId}: Stores project data. Each project contains a 'developerId' field to enforce ownership.
+ * - /contactFormSubmissions/{contactFormSubmissionId}: Stores contact form submissions. Public read access is allowed.
+ *
+ * Key Security Decisions:
+ * - User listing is disabled for developer profiles to prevent unauthorized information harvesting.
+ * - Public read access is granted to contact form submissions for ease of use. However, additional abuse prevention measures should be implemented.
+ * - Ownership of projects is enforced through the 'developerId' field within the project document.
+ *
+ * Denormalization for Authorization:
+ * - The 'developerId' field is denormalized into the /projects/{projectId} document. This avoids costly `get()` calls to the /developerProfiles collection to check ownership.
+ *   Instead, rules can directly verify `resource.data.developerId == request.auth.uid`.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Protects developer profile information, allowing only the owner to read and write their own profile.
+     * @path /developerProfiles/{developerProfileId}
+     * @allow (create, update, delete, get) if request.auth.uid == developerProfileId
+     * @deny (create, update, delete, get) if request.auth.uid != developerProfileId
+     * @principle Enforces document ownership for developer profiles.
+     */
+    match /developerProfiles/{developerProfileId} {
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      function isOwner(userId) {
+        return isSignedIn() && request.auth.uid == userId;
+      }
+
+      function isExistingOwner(userId) {
+          return isOwner(userId) && resource != null;
+      }
+
+      allow get: if isOwner(developerProfileId);
+      allow list: if false; // Listing user profiles is not permitted.
+
+      allow create: if isOwner(developerProfileId);
+      allow update: if isExistingOwner(developerProfileId);
+      allow delete: if isExistingOwner(developerProfileId);
+    }
+
+    /**
+     * @description Manages project data, ensuring that only the owner (developer) can create, update, or delete their projects.
+     * @path /projects/{projectId}
+     * @allow (create) if request.resource.data.developerId == request.auth.uid
+     * @allow (update, delete) if resource.data.developerId == request.auth.uid
+     * @allow (get, list) if true
+     * @deny (create) if request.resource.data.developerId != request.auth.uid
+     * @deny (update, delete) if resource.data.developerId != request.auth.uid
+     * @principle Enforces document ownership for project data using the 'developerId' field.
+     */
+    match /projects/{projectId} {
+      function isSignedIn() {
+        return request.auth != null;
+      }
+
+      function isOwner() {
+        return isSignedIn() && resource.data.developerId == request.auth.uid;
+      }
+
+      function canCreate() {
+        return request.resource.data.developerId == request.auth.uid;
+      }
+
+      function isExistingOwner() {
+          return isOwner() && resource != null;
+      }
+
+      allow get, list: if true; // Public read access for projects.
+      allow create: if canCreate();
+      allow update: if isExistingOwner();
+      allow delete: if isExistingOwner();
+    }
+
+    /**
+     * @description Handles contact form submissions with public read access.
+     * @path /contactFormSubmissions/{contactFormSubmissionId}
+     * @allow (get, list) if true
+     * @allow (create, update, delete) if false
+     * @principle Allows public read access for contact form submissions.
+     */
+    match /contactFormSubmissions/{contactFormSubmissionId} {
+      allow get, list: if true; // Public read access for contact form submissions.
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

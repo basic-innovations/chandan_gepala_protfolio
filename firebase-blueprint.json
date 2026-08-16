@@ -1,0 +1,213 @@
+{
+  "entities": {
+    "Project": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Project",
+      "type": "object",
+      "description": "Represents a mobile application development project in the portfolio.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Project entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the project."
+        },
+        "summary": {
+          "type": "string",
+          "description": "A brief summary of the project."
+        },
+        "problemStatement": {
+          "type": "string",
+          "description": "The problem the project aimed to solve."
+        },
+        "roleAndSolution": {
+          "type": "string",
+          "description": "Description of the developer's role and the solution implemented."
+        },
+        "techStack": {
+          "type": "array",
+          "description": "List of technologies used in the project.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "appStoreLink": {
+          "type": "string",
+          "description": "Link to the project on the Google Play Store or Apple App Store.",
+          "format": "uri"
+        },
+        "githubLink": {
+          "type": "string",
+          "description": "Link to the project's GitHub repository.",
+          "format": "uri"
+        },
+        "imageUrls": {
+          "type": "array",
+          "description": "URLs of screenshots or mockups of the project.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "problemStatement",
+        "roleAndSolution",
+        "techStack"
+      ]
+    },
+    "ContactFormSubmission": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactFormSubmission",
+      "type": "object",
+      "description": "Represents a submission from the contact form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContactFormSubmission entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person submitting the form."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person submitting the form.",
+          "format": "email"
+        },
+        "subject": {
+          "type": "string",
+          "description": "The subject of the message."
+        },
+        "message": {
+          "type": "string",
+          "description": "The message content."
+        },
+        "submissionDate": {
+          "type": "string",
+          "description": "The date and time the form was submitted.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "subject",
+        "message",
+        "submissionDate"
+      ]
+    },
+    "DeveloperProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DeveloperProfile",
+      "type": "object",
+      "description": "Represents the developer's profile information.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the DeveloperProfile entity."
+        },
+        "fullName": {
+          "type": "string",
+          "description": "The full name of the developer."
+        },
+        "bio": {
+          "type": "string",
+          "description": "A brief biography of the developer."
+        },
+        "skills": {
+          "type": "array",
+          "description": "An array of the developer's skills.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resumeUrl": {
+          "type": "string",
+          "description": "URL to the developer's resume.",
+          "format": "uri"
+        },
+        "linkedInUrl": {
+          "type": "string",
+          "description": "URL to the developer's LinkedIn profile.",
+          "format": "uri"
+        },
+        "githubUrl": {
+          "type": "string",
+          "description": "URL to the developer's GitHub profile.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "fullName",
+        "bio",
+        "skills"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/developerProfiles/{developerProfileId}",
+        "definition": {
+          "entityName": "DeveloperProfile",
+          "schema": {
+            "$ref": "#/backend/entities/DeveloperProfile"
+          },
+          "description": "Stores developer profile information.  Access is restricted to the specific developer.",
+          "params": [
+            {
+              "name": "developerProfileId",
+              "description": "The unique identifier for the developer profile, which must match the user's UID."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/projects/{projectId}",
+        "definition": {
+          "entityName": "Project",
+          "schema": {
+            "$ref": "#/backend/entities/Project"
+          },
+          "description": "Stores projects with a denormalized 'developerId' field for authorization independence.",
+          "params": [
+            {
+              "name": "projectId",
+              "description": "The unique identifier for the project."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/contactFormSubmissions/{contactFormSubmissionId}",
+        "definition": {
+          "entityName": "ContactFormSubmission",
+          "schema": {
+            "$ref": "#/backend/entities/ContactFormSubmission"
+          },
+          "description": "Stores contact form submissions. No specific authorization beyond validation and abuse prevention.",
+          "params": [
+            {
+              "name": "contactFormSubmissionId",
+              "description": "The unique identifier for the contact form submission."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to be secure, scalable, and easily debuggable, following the core design principles and strategy mandates. It emphasizes authorization independence by avoiding hierarchical authorization dependencies, ensures clarity of intent, uses DBAC (Database-Based Access Control), and supports secure `list` operations (QAPs). It also maintains invariants such as ownership, timestamps, and denormalized data.\n\n**Explanation of Structure and Authorization Independence:**\n\n*   **DeveloperProfile:** The `developerProfiles` collection stores developer profile information. Access is restricted to the specific developer.\n*   **Projects:** Projects are stored in the `projects` collection. Since they belong to a developer we will store the `developerId` on each project so that we can use that in the security rules.\n*   **ContactFormSubmissions:**  Contact form submissions are stored in the `contactFormSubmissions` collection. While these are submissions *to* the developer, all submissions will be public and do not have any authorization restraints beyond standard validation and abuse prevention.\n\n**Authorization Independence (Denormalization):**\n\n*   The `projects` collection includes the `developerId` field. This denormalization ensures that the security rules for `projects` can be enforced independently without needing to `get()` data from the `/developerProfiles/{developerId}` document. This enables atomic operations (transactions/batches) and simplifies debugging.\n\n**QAPs (Rules are not Filters):**\n\n*   **Structural Segregation:** The separation of `contactFormSubmissions`, `projects`, and `developerProfiles` into distinct collections ensures that each collection has a homogeneous security posture, supporting secure `list` operations. For example, listing `projects` is secure because the security rules can efficiently filter based on the `developerId` and the `request.auth.uid` without needing to fetch additional data.\n\n**DBAC (Database-Based Access Control):**\n\n*   The structure relies solely on `request.auth.uid` for authorization. There is no reliance on custom claims. Access to developer profiles is based on matching the authenticated user's UID with the document ID.\n\n**Invariants:**\n\n*   The structure supports the integrity of ownership via the `developerId` field in the `projects` collection. Timestamps and denormalized data can be easily managed and enforced via Firestore rules and server-side functions.\n"
+  }
+}
