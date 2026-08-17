@@ -71,3 +71,16 @@
     @apply opacity-100 scale-100 blur-0;
   }
 }
+
+@keyframes orbit {
+  0% {
+    transform: rotate(var(--angle)) translateY(var(--radius)) rotate(calc(-1 * var(--angle)));
+  }
+  100% {
+    transform: rotate(calc(var(--angle) + 360deg)) translateY(var(--radius)) rotate(calc(-1 * (var(--angle) + 360deg)));
+  }
+}
+
+.animate-orbit {
+  animation: orbit var(--duration) linear infinite;
+}

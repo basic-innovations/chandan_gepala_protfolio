@@ -23,7 +23,7 @@ export const personalInfo = {
     },
     { name: 'Email', url: 'mailto:chandangepala@gmail.com', icon: Mail },
   ],
-  resumeUrl: 'https://firebasestorage.googleapis.com/v0/b/studio-6438978537-fd973.firebasestorage.app/o/Chandan_Android_Developer_5Y.pdf?alt=media&token=ee917aa5-069c-427f-8427-0960c9df1421',
+  resumeUrl: 'https://drive.google.com/uc?export=download&id=1P1i_Fk2I2LotFouCqbTKE1kziFynclh9',
 };
 
 export const skills = [
