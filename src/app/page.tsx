@@ -1,5 +1,8 @@
 
+export const dynamic = 'force-dynamic';
+
 import { AboutSection } from '@/components/page-sections/about-section';
+
 import { ContactSection } from '@/components/page-sections/contact-section';
 import { HeroSection } from '@/components/page-sections/hero-section';
 import { ProjectsSection } from '@/components/page-sections/projects-section';
